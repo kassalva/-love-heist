@@ -156,6 +156,8 @@ input{
 </head>
 <body>
 
+<div id="heartBurst" aria-hidden="true"></div>
+
 <button id="musicToggle" class="music-toggle" onclick="toggleMusic()" aria-label="Toggle music">🔇 MUSIC</button>
 <audio id="bgMusic" loop preload="none"></audio>
 
@@ -318,7 +320,6 @@ input{
   <div class="money-bag">💰</div>
   <div class="secret-label">DON'T TOUCH THE SCORE</div>
 </div>
-<div id="heartBurst" aria-hidden="true"></div>
 
 <button class="heart-btn" onclick="show('score')"><span>You Got Away With It</span></button>
  </div>
@@ -482,7 +483,13 @@ show = function(id){
 
 
 function burstHearts(el){
- const layer=document.getElementById('heartBurst');
+ let layer=document.getElementById('heartBurst');
+ if(!layer){
+   layer=document.createElement('div');
+   layer.id='heartBurst';
+   layer.setAttribute('aria-hidden','true');
+   document.body.appendChild(layer);
+ }
  const rect=el.getBoundingClientRect();
  const cx=rect.left+rect.width/2, cy=rect.top+rect.height/2;
  for(let i=0;i<34;i++){
