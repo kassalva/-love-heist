@@ -113,21 +113,17 @@ input{
 
 /* Romantic heart-shaped navigation buttons */
 .heart-btn{
-  position:relative; width:132px; height:112px; min-height:112px; padding:0;
-  border:0; background:transparent; color:var(--cream); margin:18px auto 0;
-  display:inline-grid; place-items:center; text-transform:uppercase; letter-spacing:.11em;
-  font:bold 11px Arial,sans-serif; filter:drop-shadow(0 0 10px rgba(225,31,62,.28));
+  position:relative;width:148px;height:132px;min-height:132px;padding:0;
+  border:0!important;background:linear-gradient(145deg,#f52b52,#8f0d22 72%)!important;
+  color:var(--cream);margin:18px auto 0;display:inline-flex;align-items:center;justify-content:center;
+  text-transform:uppercase;letter-spacing:.11em;font:bold 11px Arial,sans-serif;
+  clip-path:polygon(50% 100%,0 35%,0 22%,7% 10%,18% 3%,30% 4%,40% 10%,50% 22%,60% 10%,70% 4%,82% 3%,93% 10%,100% 22%,100% 35%);
+  filter:drop-shadow(0 0 10px rgba(225,31,62,.38));
   transition:transform .25s ease,filter .25s ease;
 }
-.heart-btn:before,.heart-btn:after{content:"";position:absolute;top:16px;width:64px;height:84px;
-  background:linear-gradient(145deg,#f52b52,#9d1026 72%); border:1px solid #ff6a83;
-  box-shadow:0 0 18px rgba(225,31,62,.72),inset 0 0 12px rgba(255,255,255,.13);
-}
-.heart-btn:before{left:27px;transform:rotate(-45deg);transform-origin:0 100%;border-radius:44px 44px 0 44px}
-.heart-btn:after{left:41px;transform:rotate(45deg);transform-origin:100% 100%;border-radius:44px 44px 44px 0}
-.heart-btn span{position:relative;z-index:2;max-width:92px;line-height:1.25;text-shadow:0 1px 5px #000;margin-top:13px}
-.heart-btn:hover{background:transparent;transform:translateY(-3px) scale(1.04);filter:drop-shadow(0 0 17px rgba(225,31,62,.55))}
-.heart-btn:hover:before,.heart-btn:hover:after{background:linear-gradient(145deg,#ff3e63,#b5122b)}
+.heart-btn span{position:relative;z-index:2;width:92px;line-height:1.25;text-shadow:0 1px 5px #000}
+.heart-btn:hover{background:linear-gradient(145deg,#ff3e63,#b5122b)!important;transform:translateY(-3px) scale(1.05);filter:drop-shadow(0 0 18px rgba(225,31,62,.7))}
+.heart-btn:focus-visible{outline:2px solid var(--gold);outline-offset:5px}
 .target-photo{overflow:hidden}.profile-photo{width:100%;height:260px;object-fit:cover;display:block;margin-bottom:18px;filter:saturate(.88);border-bottom:1px solid #3b3b3b}
 .classified-note{font:700 10px Arial,sans-serif;letter-spacing:.13em;color:#d7b77a;margin-top:22px}
 .crosshair{font:48px Arial;color:#e11f3e;text-align:right;line-height:1;margin-bottom:6px;text-shadow:0 0 15px rgba(225,31,62,.6)}
@@ -270,7 +266,11 @@ input{
      <div class="memory"><img src="paris.jpg" alt="Alex and Kassandra in Paris"><div class="caption"><strong>PARIS 🇫🇷</strong><p>Because apparently one heart wasn't enough—we had to steal a whole city together.</p></div></div>
    </div>
    <p class="sub" style="font-size:16px">And that's only part of the getaway: Barcelona, Mexico, Hawaii, and everywhere still waiting for us.</p>
-   <button class="heart-btn" onclick="show('things')"><span>Next</span></button>
+   <div class="secret-money" onclick="burstHearts(this)" title="Psst... click the bag">
+     <div class="money-bag">💰</div>
+     <div class="secret-label">A LITTLE BONUS FROM THE TAKE</div>
+   </div>
+   <button class="heart-btn" onclick="show('things')"><span>Continue the Heist</span></button>
  </div>
 </section>
 
@@ -320,7 +320,7 @@ input{
 </div>
 <div id="heartBurst" aria-hidden="true"></div>
 
-<button class="heart-btn" onclick="show('memories')"><span>See Our Getaway</span></button>
+<button class="heart-btn" onclick="show('score')"><span>You Got Away With It</span></button>
  </div>
 </section>
 
