@@ -183,7 +183,7 @@ input{
         </div>
       </div>
     </div>
-    <p class="footer-note">AUTHORIZED ROBBER: ALEX<br>WEBSITE ACCESS CODE: 0917<br>MISSION: STEAL HER HEART<br><span class="gold">YOUR MISSION AWAITS.</span></p>
+    <p class="footer-note">AUTHORIZED ROBBER: ALEX<br>WEBSITE ACCESS CODE: CLASSIFIED<br>MISSION: STEAL HER HEART<br><span class="gold">YOUR MISSION AWAITS.</span></p>
   </div>
 </section>
 
@@ -526,26 +526,54 @@ let audioCtx = null;
 let musicTimer = null;
 let musicStep = 0;
 
-// Original, royalty-free synthesized soundtrack: a soft cinematic spy/heist loop.
-const melody = [220, 261.63, 329.63, 293.66, 246.94, 329.63, 392, 329.63];
-function playNote(freq, when, duration=0.42, volume=0.025){
+// Original, royalty-free synthesized soundtrack: a soft romantic cinematic loop.
+// Gentle major-7th chords + a warm melody for a romantic, not creepy, feel.
+const chordProgression = [
+  [261.63, 329.63, 392.00, 493.88], // Cmaj7
+  [220.00, 261.63, 329.63, 392.00], // Am7
+  [174.61, 220.00, 261.63, 329.63], // Fmaj7
+  [196.00, 246.94, 293.66, 392.00]  // G7sus
+];
+const melody = [
+  329.63, 392.00, 493.88, 392.00,
+  329.63, 293.66, 329.63, 392.00,
+  440.00, 392.00, 329.63, 293.66,
+  261.63, 293.66, 329.63, 392.00
+];
+
+function playTone(freq, when, duration=0.75, volume=0.018, type='sine'){
   if(!audioCtx) return;
   const osc=audioCtx.createOscillator();
   const gain=audioCtx.createGain();
-  osc.type='triangle';
+  osc.type=type;
   osc.frequency.setValueAtTime(freq, when);
   gain.gain.setValueAtTime(0.0001, when);
-  gain.gain.exponentialRampToValueAtTime(volume, when+0.025);
+  gain.gain.exponentialRampToValueAtTime(volume, when+0.12);
   gain.gain.exponentialRampToValueAtTime(0.0001, when+duration);
   osc.connect(gain); gain.connect(audioCtx.destination);
-  osc.start(when); osc.stop(when+duration+0.03);
+  osc.start(when); osc.stop(when+duration+0.05);
 }
+
 function scheduleMusic(){
   if(!audioCtx || !musicOn) return;
-  const now=audioCtx.currentTime+0.05;
-  for(let i=0;i<8;i++) playNote(melody[(musicStep+i)%melody.length], now+i*0.52, 0.42, 0.018);
-  musicStep=(musicStep+8)%melody.length;
-  musicTimer=setTimeout(scheduleMusic, 3900);
+  const now=audioCtx.currentTime+0.08;
+  const beat=0.72;
+  const chordDuration=beat*4;
+
+  // Soft sustained chords underneath.
+  for(let c=0;c<4;c++){
+    const chord=chordProgression[c];
+    chord.forEach((freq,i)=>playTone(freq, now+c*chordDuration, chordDuration*0.92, i===0?0.012:0.007, 'sine'));
+  }
+
+  // Warm, simple melody floating above the chords.
+  for(let i=0;i<16;i++){
+    const freq=melody[(musicStep+i)%melody.length];
+    playTone(freq, now+i*beat, 0.58, 0.014, 'triangle');
+  }
+
+  musicStep=(musicStep+16)%melody.length;
+  musicTimer=setTimeout(scheduleMusic, chordDuration*4*1000);
 }
 function startMusic(){
   if(musicOn) return;
