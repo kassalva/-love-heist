@@ -158,6 +158,56 @@ input{
 @keyframes paperIn{from{opacity:0;transform:translateY(18px) rotate(.8deg)}to{opacity:1;transform:none}}
 .gallery figure{transition:transform .25s ease,box-shadow .25s ease}
 .gallery figure:hover{transform:translateY(-4px) rotate(-.3deg);box-shadow:0 18px 38px #000}
+
+/* Cinematic anniversary refresh — inspired by the supplied LOVE HEIST reference */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&display=swap');
+:root{
+  --black:#050505; --ink:#101010; --red:#e11f4f; --deep:#690d24;
+  --cream:#f8efe3; --gold:#d8b878; --paper:#f1e5d2; --muted:#9d968c;
+  --pink:#ff6e91;
+}
+body{font-family:'Cormorant Garamond',Georgia,'Times New Roman',serif;background:
+  radial-gradient(circle at 50% 0%,rgba(181,18,43,.12),transparent 32%),
+  radial-gradient(circle at 10% 85%,rgba(216,184,120,.06),transparent 24%),#050505;}
+body:after{content:"";position:fixed;inset:0;pointer-events:none;opacity:.12;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);background-size:46px 46px;mix-blend-mode:screen;}
+.screen{padding:34px 18px;overflow:hidden}
+.screen:before,.screen:after{content:"♥";position:absolute;color:rgba(225,31,79,.14);font-size:90px;line-height:1;pointer-events:none;font-family:Georgia,serif}
+.screen:before{left:-25px;top:12%;transform:rotate(-18deg)} .screen:after{right:-20px;bottom:9%;transform:rotate(18deg)}
+.wrap{width:min(1040px,100%)}
+.eyebrow{font-family:Arial,sans-serif;font-size:10px;letter-spacing:.28em;color:var(--gold)}
+.mission-heading{font-size:clamp(25px,4vw,38px);letter-spacing:.12em;text-transform:uppercase;color:var(--cream);margin:0 auto 28px;text-shadow:0 0 18px rgba(216,184,120,.12)}
+.mission-heading span{color:var(--red);font-family:Arial,sans-serif;font-size:.8em;padding:0 8px}
+h2{font-weight:500;letter-spacing:.03em;text-transform:uppercase;text-shadow:0 0 24px rgba(255,255,255,.08)}
+h1{font-weight:500}
+.sub{font-family:'Cormorant Garamond',Georgia,serif;color:#e8e0d5}
+.card,.target-briefing,.thing,.memory,.gallery figure{border-color:rgba(216,184,120,.28);background:linear-gradient(145deg,rgba(27,27,27,.96),rgba(8,8,8,.98));}
+.card{box-shadow:0 22px 70px rgba(0,0,0,.65),inset 0 0 35px rgba(216,184,120,.025)}
+.target-briefing{display:grid;grid-template-columns:1fr 1fr;gap:30px;max-width:860px;margin:12px auto 22px;padding:34px;align-items:center;border:1px solid rgba(216,184,120,.32);box-shadow:0 24px 70px rgba(0,0,0,.7)}
+.target-copy{text-align:left;padding:10px 10px 10px 12px}.target-copy h2{font-size:clamp(48px,8vw,78px);margin:8px 0 2px;color:var(--cream)}
+.brief-line{margin-top:28px;border-left:2px solid var(--red);padding-left:16px}.brief-line span{font:700 10px Arial;letter-spacing:.2em;color:var(--red)}.brief-line p{margin:7px 0 0;font-size:19px;line-height:1.35}
+.target-photo-card{position:relative;background:#eee6da;padding:12px 12px 34px;box-shadow:0 20px 55px #000;transform:rotate(2deg);border:1px solid #d5c5ae}.target-photo-card img{display:block;width:100%;height:430px;object-fit:cover;filter:saturate(.88) contrast(1.04)}
+.target-photo-card .crosshair{position:absolute;z-index:3;right:8px;top:-12px;font-size:56px;color:var(--red);text-shadow:0 0 16px rgba(225,31,79,.7)}
+.target-photo-card .photo-mark{position:absolute;right:20px;bottom:9px;color:#8d1a31;font:700 10px Arial;letter-spacing:.2em;transform:rotate(-2deg)}
+.tape{position:absolute;z-index:4;width:115px;height:27px;left:38%;top:-13px;background:rgba(225,31,79,.42);transform:rotate(-5deg);box-shadow:0 3px 5px rgba(0,0,0,.2)}
+.code-hint{color:#bdb5a9;font-family:Arial,sans-serif;font-size:10px;letter-spacing:.1em}
+.vault-door{border-color:#555;border-radius:50%;background:radial-gradient(circle,#28221d 0 40%,#111 41% 100%);box-shadow:0 0 0 8px #171717,0 0 80px rgba(225,31,79,.1),inset 0 0 50px #000}
+.vault-inner{border-color:#6b6255}.stamp{font-family:Arial,sans-serif;border-color:var(--red);color:#ff5a79;letter-spacing:.22em}
+input{border-color:#665d50;background:#090909;box-shadow:inset 0 0 18px #000,0 0 20px rgba(225,31,79,.08)}
+.heart-btn{filter:drop-shadow(0 0 12px rgba(225,31,79,.5));}
+.heart-btn:hover{filter:drop-shadow(0 0 24px rgba(225,31,79,.85));}
+.deal-photo-wrap,.thief-photo-wrap,.final-clue-frame{box-shadow:0 22px 60px rgba(0,0,0,.72)}
+.thief-photo-wrap{border-color:rgba(216,184,120,.32);background:#ede4d7;padding:12px 12px 22px}.thief-photo{filter:saturate(.82) contrast(1.03);border:0}.photo-stamp{font-family:Arial,sans-serif}
+.deal-photo-wrap{border-color:rgba(216,184,120,.34);background:#eee4d2}
+.counter{gap:12px}.unit{border-top-color:rgba(216,184,120,.35);background:linear-gradient(180deg,rgba(30,24,18,.4),transparent);padding:18px 4px}.unit b{font-family:Arial,sans-serif;color:#ff4d70;text-shadow:0 0 16px rgba(225,31,79,.35)}
+.puzzle{border:1px solid rgba(216,184,120,.25);box-shadow:0 22px 60px #000}.piece.selected{outline-color:var(--pink)}
+.memory-grid{gap:16px}.memory{box-shadow:0 18px 45px rgba(0,0,0,.65)}.memory img{filter:saturate(.8) contrast(1.05)}
+.thing{box-shadow:0 15px 38px rgba(0,0,0,.65);border-left:2px solid rgba(225,31,79,.5)}.thing .num{color:#f04a6b}.thing h3{font-weight:600}
+.letter{background:linear-gradient(135deg,#f2e7d6,#e8dbc7);box-shadow:0 25px 70px rgba(0,0,0,.75);border:1px solid #bba98f}.letter p{font-family:'Cormorant Garamond',Georgia,serif}.letter:before{font-family:Arial,sans-serif}
+.final-clue-frame{transform:rotate(2deg);border:1px solid #c9b99f}.final-clue-title{font-family:Arial,sans-serif;color:#f2d6a1;letter-spacing:.42em;font-weight:700}
+.vault-final{border-color:rgba(216,184,120,.35);background:radial-gradient(circle at 50% 38%,rgba(225,31,79,.12),#0a0a0a 48%,#050505 100%);box-shadow:inset 0 0 120px #000,0 25px 70px rgba(0,0,0,.7)}
+.password{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;color:#fff;text-shadow:0 0 30px rgba(255,110,145,.28)}
+.music-toggle{border-color:rgba(216,184,120,.55);font-family:Arial,sans-serif;color:#ead8b7}
+@media(max-width:700px){.target-briefing{grid-template-columns:1fr;padding:22px}.target-photo-card img{height:360px}.target-copy{text-align:center}.brief-line{text-align:left}.mission-heading{margin-bottom:18px}}
 </style>
 </head>
 <body>
@@ -183,20 +233,29 @@ input{
         </div>
       </div>
     </div>
-    <p class="footer-note">AUTHORIZED ROBBER: ALEX<br>WEBSITE ACCESS CODE: 0917<br>MISSION: STEAL HER HEART<br><span class="gold">YOUR MISSION AWAITS.</span></p>
+    <p class="footer-note">AUTHORIZED ROBBER: ALEX<br>ACCESS CODE: <span class="gold">CLASSIFIED</span><br><span class="code-hint">HINT: THE DAY WE MADE IT OFFICIAL.</span><br>MISSION: STEAL HER HEART<br><span class="gold">YOUR MISSION AWAITS.</span></p>
   </div>
 </section>
 
 <section id="target" class="screen">
  <div class="wrap">
-   <div class="eyebrow">MISSION 01 • THE TARGET</div>
-   <h1>THE<br><span class="red">HEART</span></h1>
-   <p class="sub">You've made it inside. Now identify the target.</p>
-   <div class="target-grid">
-     <div class="target target-photo"><img class="profile-photo" src="kassandra-target.jpg" alt="Kassandra at the torii gates"><div class="eyebrow">TARGET</div><h3>Kassandra</h3><p class="sub" style="font-size:15px">One heart. Absolutely priceless.</p></div>
-     <div class="target"><div class="crosshair">◎</div><div class="eyebrow">OBJECTIVE</div><h3>STEAL IT.</h3><p class="sub" style="font-size:15px">No alarms. No regrets.</p><p class="classified-note">TARGET STATUS: COMPLETELY WORTH THE RISK.</p></div>
+   <div class="mission-heading"><span>←</span> MISSION BRIEFING <span>→</span></div>
+   <div class="target-briefing">
+     <div class="target-copy">
+       <div class="eyebrow">TARGET: CLASSIFIED</div>
+       <h2>KASSANDRA</h2>
+       <p class="sub">aka The One,<br>My Greatest Heist</p>
+       <div class="brief-line"><span>OBJECTIVE:</span><p>Remind you that you've always been worth stealing.</p></div>
+       <div class="brief-line"><span>RISK LEVEL:</span><p>Extremely worth the risk.</p></div>
+     </div>
+     <div class="target-photo-card">
+       <div class="crosshair">⌾</div>
+       <div class="tape"></div>
+       <img src="kassandra-target.jpg" alt="Kassandra at the torii gates">
+       <div class="photo-mark">TARGET</div>
+     </div>
    </div>
-   <button class="heart-btn" onclick="show('robber')"><span>Begin the Heist</span></button>
+   <button class="heart-btn" onclick="show('robber')"><span>Continue</span></button>
  </div>
 </section>
 
