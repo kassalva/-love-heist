@@ -183,7 +183,7 @@ input{
         </div>
       </div>
     </div>
-    <p class="footer-note">AUTHORIZED ROBBER: ALEX<br>WEBSITE ACCESS CODE: CLASSIFIED<br>MISSION: STEAL HER HEART<br><span class="gold">YOUR MISSION AWAITS.</span></p>
+    <p class="footer-note">AUTHORIZED ROBBER: ALEX<br>WEBSITE ACCESS CODE: 0917<br>MISSION: STEAL HER HEART<br><span class="gold">YOUR MISSION AWAITS.</span></p>
   </div>
 </section>
 
@@ -299,7 +299,7 @@ input{
    <h2>CLASSIFIED: FOR YOUR EYES ONLY</h2>
    <p class="sub">Every successful heist requires knowing the person you're stealing from.</p>
    <div class="letter">
-     <p><strong>My Stupi,</strong></p>
+     <p><strong>My Stoopi,</strong></p>
      <p>It's crazy to think that our story started back in high school. Before the trips, before the wedding, before all the memories we've made together, there were just two teenagers who had no idea how much life they were going to experience together.</p>
      <p>And now, here we are.</p>
      <p>Ten years married and almost seventeen years of choosing each other.</p>
@@ -313,13 +313,13 @@ input{
      <p>If I could go back to that high school hallway and tell that younger version of us everything that was coming—our wedding, our travels, our laughter, our struggles, and all these years together—I don't think we would have believed it.</p>
      <p>But I wouldn't change a thing.</p>
      <p>Thank you for being my husband, my travel partner, my favorite person to laugh with, and the person I want beside me for the rest of my life.</p>
-     <p><strong>You may have started this heist back in 2009, Stupi…</strong></p>
+     <p><strong>You may have started this heist back in 2009, Stoopi…</strong></p>
      <p><strong>but after all these years, you've officially gotten away with my heart.</strong></p>
      <p>And honestly?</p>
      <p><strong>I don't want it back.</strong></p>
      <p>Here's to our first ten years of marriage, and to all the years, adventures, memories, and love still to come.</p>
      <p><strong>I love you. Always.</strong></p>
-     <p class="signature">Forever yours,<br>Kassandra ❤️</p>
+     <p class="signature">Forever yours,<br>Kassy ❤️</p>
    </div>
    
 <div class="secret-money" onclick="burstHearts(this)" title="Psst... click the bag">
@@ -526,54 +526,26 @@ let audioCtx = null;
 let musicTimer = null;
 let musicStep = 0;
 
-// Original, royalty-free synthesized soundtrack: a soft romantic cinematic loop.
-// Gentle major-7th chords + a warm melody for a romantic, not creepy, feel.
-const chordProgression = [
-  [261.63, 329.63, 392.00, 493.88], // Cmaj7
-  [220.00, 261.63, 329.63, 392.00], // Am7
-  [174.61, 220.00, 261.63, 329.63], // Fmaj7
-  [196.00, 246.94, 293.66, 392.00]  // G7sus
-];
-const melody = [
-  329.63, 392.00, 493.88, 392.00,
-  329.63, 293.66, 329.63, 392.00,
-  440.00, 392.00, 329.63, 293.66,
-  261.63, 293.66, 329.63, 392.00
-];
-
-function playTone(freq, when, duration=0.75, volume=0.018, type='sine'){
+// Original, royalty-free synthesized soundtrack: a soft cinematic spy/heist loop.
+const melody = [220, 261.63, 329.63, 293.66, 246.94, 329.63, 392, 329.63];
+function playNote(freq, when, duration=0.42, volume=0.025){
   if(!audioCtx) return;
   const osc=audioCtx.createOscillator();
   const gain=audioCtx.createGain();
-  osc.type=type;
+  osc.type='triangle';
   osc.frequency.setValueAtTime(freq, when);
   gain.gain.setValueAtTime(0.0001, when);
-  gain.gain.exponentialRampToValueAtTime(volume, when+0.12);
+  gain.gain.exponentialRampToValueAtTime(volume, when+0.025);
   gain.gain.exponentialRampToValueAtTime(0.0001, when+duration);
   osc.connect(gain); gain.connect(audioCtx.destination);
-  osc.start(when); osc.stop(when+duration+0.05);
+  osc.start(when); osc.stop(when+duration+0.03);
 }
-
 function scheduleMusic(){
   if(!audioCtx || !musicOn) return;
-  const now=audioCtx.currentTime+0.08;
-  const beat=0.72;
-  const chordDuration=beat*4;
-
-  // Soft sustained chords underneath.
-  for(let c=0;c<4;c++){
-    const chord=chordProgression[c];
-    chord.forEach((freq,i)=>playTone(freq, now+c*chordDuration, chordDuration*0.92, i===0?0.012:0.007, 'sine'));
-  }
-
-  // Warm, simple melody floating above the chords.
-  for(let i=0;i<16;i++){
-    const freq=melody[(musicStep+i)%melody.length];
-    playTone(freq, now+i*beat, 0.58, 0.014, 'triangle');
-  }
-
-  musicStep=(musicStep+16)%melody.length;
-  musicTimer=setTimeout(scheduleMusic, chordDuration*4*1000);
+  const now=audioCtx.currentTime+0.05;
+  for(let i=0;i<8;i++) playNote(melody[(musicStep+i)%melody.length], now+i*0.52, 0.42, 0.018);
+  musicStep=(musicStep+8)%melody.length;
+  musicTimer=setTimeout(scheduleMusic, 3900);
 }
 function startMusic(){
   if(musicOn) return;
