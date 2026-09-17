@@ -69,6 +69,12 @@ input{
 .piece{background-size:400% 400%;border:0;padding:0;min-height:0;position:relative;cursor:pointer}
 .piece.selected{outline:4px solid var(--gold);z-index:2}
 .puzzle-note{font:12px Arial;color:#aaa;letter-spacing:.08em}
+
+.final-clue{margin:34px auto 10px;display:flex;flex-direction:column;align-items:center;max-width:360px}
+.final-clue-title{font-family:Georgia,serif;letter-spacing:.38em;font-size:15px;color:#f0d8a8;margin:0 0 12px;text-transform:uppercase;text-shadow:0 0 12px rgba(240,216,168,.2)}
+.final-clue-frame{padding:10px 10px 18px;background:#f4ead8;box-shadow:0 16px 40px rgba(0,0,0,.45);transform:rotate(1deg);width:min(100%,330px);box-sizing:border-box}
+.final-clue-frame img{display:block;width:100%;aspect-ratio:3/4;object-fit:cover;border:1px solid #d7c8ad}
+.final-clue-caption{font-family:Georgia,serif;color:#2a241d;text-align:center;font-size:15px;letter-spacing:.08em;margin-top:12px}
 .vault-final{padding:60px 20px;border:1px solid #514a3d;background:radial-gradient(circle at center,#201b13,#090909 65%);box-shadow:inset 0 0 100px #000}
 .password{font:700 clamp(42px,10vw,94px) Arial;letter-spacing:.08em;color:#fff;text-shadow:0 0 25px rgba(255,255,255,.18);margin:25px 0}
 .footer-note{font:12px Arial;color:#8f8a82;letter-spacing:.1em;line-height:1.7}
@@ -348,6 +354,13 @@ input{
     <p class="sub">You've stolen the heart. Now claim the final password.</p>
     <div class="password">I LOVE YOU</div>
     <p class="eyebrow" style="font-size:13px;margin-top:-8px">PASSWORD FOR THE REAL-LIFE GIFT BOX</p>
+    <div class="final-clue" aria-label="Final clue">
+      <div class="final-clue-title">CLUE</div>
+      <div class="final-clue-frame">
+        <img src="clue-photo.jpg" alt="Final clue photo">
+        <div class="final-clue-caption">ONE LAST CLUE</div>
+      </div>
+    </div>
     <div class="stamp">ACCESS GRANTED</div>
     <p class="sub" style="margin:28px auto;max-width:650px">
       Memorize this password.<br><br>
